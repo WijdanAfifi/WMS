@@ -9,6 +9,13 @@ public class BARANG extends javax.swing.JFrame {
     public BARANG() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        
+        table_barang.getTableHeader().setOpaque(false);
+        table_barang.getTableHeader().setBackground(new java.awt.Color(43, 57, 144));
+        table_barang.getTableHeader().setForeground(java.awt.Color.BLACK);
+        table_barang.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        table_barang.getTableHeader().setReorderingAllowed(false);
     }
 
     /**
@@ -43,8 +50,10 @@ public class BARANG extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel2.setForeground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(248, 249, 250));
+
+        jPanel2.setBackground(new java.awt.Color(43, 57, 144));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -62,10 +71,11 @@ public class BARANG extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Jumlah");
 
-        nama_barang.setBackground(new java.awt.Color(102, 102, 102));
+        nama_barang.setBackground(new java.awt.Color(43, 57, 144));
         nama_barang.setForeground(new java.awt.Color(255, 255, 255));
         nama_barang.setBorder(null);
 
+        kategori_barang.setBackground(new java.awt.Color(43, 57, 144));
         kategori_barang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Protein", "Karbohidat" }));
 
         jumlah_barang.setValue(1);
@@ -80,7 +90,9 @@ public class BARANG extends javax.swing.JFrame {
         tambah.setText("TAMBAH");
         tambah.addActionListener(this::tambahActionPerformed);
 
+        hapus.setBackground(new java.awt.Color(226, 35, 26));
         hapus.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        hapus.setForeground(new java.awt.Color(255, 255, 255));
         hapus.setText("HAPUS");
         hapus.addActionListener(this::hapusActionPerformed);
 
@@ -162,6 +174,7 @@ public class BARANG extends javax.swing.JFrame {
                 "Nama Barang", "Kategori", "Jumlah"
             }
         ));
+        table_barang.setRowHeight(25);
         jScrollPane1.setViewportView(table_barang);
 
         back_dashboard.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
@@ -220,37 +233,37 @@ public class BARANG extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // [ Button ] Tombol TAMBAH
+    
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
         String nama = nama_barang.getText();
         String kategori = (String) kategori_barang.getSelectedItem();
         int jumlah = (int) jumlah_barang.getValue();
 
         if (!nama.isEmpty()) {
-            // Ambil model tabel
+            
             javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
 
-            // Input ke DATABASE
+            
             boolean update = DATABASE.stok_barang(nama, kategori, jumlah);
 
-            // Tambahkan baris baru ke tabel
+            
             javax.swing.JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan ke Tabel!");
             model.addRow(new Object[]{nama, kategori, jumlah});
 
-            // Reset input setelah ditambahkan
+            
             nama_barang.setText("");
-            jumlah_barang.setValue(1); // kembali ke nilai awal spinner
+            jumlah_barang.setValue(1); 
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Isi Nama Barang terlebih dahulu!");
         }
     }//GEN-LAST:event_tambahActionPerformed
 
-    // [ Button ] Tombol HAPUS
+    
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_hapusActionPerformed
 
-    // [ Button ] Tombol UBAH
+    
     private void ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ubahActionPerformed

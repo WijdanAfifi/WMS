@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class DATABASE {
     
-    // Form LOGIN
+    
     public static boolean login(String username, String password) {
         try {
             Connection conn = KONEKSI.getConnection();
@@ -32,7 +32,7 @@ public class DATABASE {
     }
     
 //=================================================================================================================== 
-    // Form REGISTER
+    
     public static boolean register(String username, String password, String jabatan, String nama_lengkap) {
         try {
             Connection conn = KONEKSI.getConnection();
@@ -47,7 +47,7 @@ public class DATABASE {
             int hasil = pst.executeUpdate();
             
             if (hasil > 0) {
-                return true; // UBAH KE TRUE JIKA DATA MASUK
+                return true;
             }
             
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class DATABASE {
     }
     
 //=================================================================================================================== 
-    // Form STOK BARANG
+    
     public static boolean stok_barang(String nama, String kategori, int jumlah) {
         try {
             Connection conn = KONEKSI.getConnection();
@@ -71,7 +71,7 @@ public class DATABASE {
             int hasil = pst.executeUpdate();
             
             if (hasil > 0) {
-                return true; // UBAH KE TRUE JIKA DATA MASUK
+                return true; 
             }
             
         } catch (Exception e) {

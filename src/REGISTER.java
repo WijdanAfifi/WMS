@@ -42,7 +42,7 @@ public class REGISTER extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(43, 57, 144));
         jPanel2.setForeground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
@@ -61,18 +61,18 @@ public class REGISTER extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Username");
 
-        full_name.setBackground(new java.awt.Color(102, 102, 102));
+        full_name.setBackground(new java.awt.Color(43, 57, 144));
         full_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         full_name.setForeground(new java.awt.Color(255, 255, 255));
         full_name.setBorder(null);
 
-        username_reg.setBackground(new java.awt.Color(102, 102, 102));
+        username_reg.setBackground(new java.awt.Color(43, 57, 144));
         username_reg.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         username_reg.setForeground(new java.awt.Color(255, 255, 255));
         username_reg.setBorder(null);
         username_reg.addActionListener(this::username_regActionPerformed);
 
-        password_reg.setBackground(new java.awt.Color(102, 102, 102));
+        password_reg.setBackground(new java.awt.Color(43, 57, 144));
         password_reg.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         password_reg.setForeground(new java.awt.Color(255, 255, 255));
         password_reg.setBorder(null);
@@ -98,7 +98,9 @@ public class REGISTER extends javax.swing.JFrame {
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
 
+        Daftar.setBackground(new java.awt.Color(226, 35, 26));
         Daftar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Daftar.setForeground(new java.awt.Color(255, 255, 255));
         Daftar.setText("DAFTAR");
         Daftar.addActionListener(this::DaftarActionPerformed);
 

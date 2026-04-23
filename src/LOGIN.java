@@ -35,7 +35,7 @@ public class LOGIN extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(43, 57, 144));
         jPanel2.setForeground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -43,7 +43,9 @@ public class LOGIN extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("LOGIN");
 
+        btn_Login.setBackground(new java.awt.Color(226, 35, 26));
         btn_Login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_Login.setForeground(new java.awt.Color(255, 255, 255));
         btn_Login.setText("LOGIN");
         btn_Login.addActionListener(this::btn_LoginActionPerformed);
 
@@ -57,12 +59,12 @@ public class LOGIN extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Password");
 
-        username_Login.setBackground(new java.awt.Color(102, 102, 102));
+        username_Login.setBackground(new java.awt.Color(43, 57, 144));
         username_Login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         username_Login.setForeground(new java.awt.Color(255, 255, 255));
         username_Login.setBorder(null);
 
-        password_Login.setBackground(new java.awt.Color(102, 102, 102));
+        password_Login.setBackground(new java.awt.Color(43, 57, 144));
         password_Login.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         password_Login.setForeground(new java.awt.Color(255, 255, 255));
         password_Login.setBorder(null);
@@ -73,7 +75,7 @@ public class LOGIN extends javax.swing.JFrame {
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setBackground(new java.awt.Color(173, 181, 189));
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Don't Have an Account?");
 
@@ -147,8 +149,9 @@ public class LOGIN extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 600, Short.MAX_VALUE))
+                .addContainerGap(600, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,22 +172,40 @@ public class LOGIN extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    // [ Button ] Tombol LOGIN
+    
     private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
         String username = username_Login.getText();
         String password = new String(password_Login.getPassword());
         
         boolean log = DATABASE.login(username, password);
+        
+        if (log) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Selamat Datang, " + username + "!");
+        
+        
+        BARANG halamanBarang = new BARANG();
+        halamanBarang.setVisible(true);
+        halamanBarang.setLocationRelativeTo(null);
+  
+        this.dispose(); 
+    } else {
+        
+        javax.swing.JOptionPane.showMessageDialog(this, "Username atau Password Salah!", "Login Gagal", javax.swing.JOptionPane.ERROR_MESSAGE);
+        
+        password_Login.setText("");
+        password_Login.requestFocus();
+    }
+  
         this.dispose();
     }//GEN-LAST:event_btn_LoginActionPerformed
 
     
-    // [ Text Field ] Hyperlink REGISTER NOW
+    
     private void click_registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_click_registerMouseClicked
         REGISTER createAcc = new REGISTER();
         createAcc.setVisible(true);
         createAcc.setLocationRelativeTo(null);
-        this.dispose(); // Menutup Form LOGIN
+        this.dispose(); 
     }//GEN-LAST:event_click_registerMouseClicked
 
     /**
