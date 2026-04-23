@@ -56,4 +56,27 @@ public class DATABASE {
         return false;
     }
     
+//=================================================================================================================== 
+    // Form STOK BARANG
+    public static boolean stok_barang(String nama, String kategori, int jumlah) {
+        try {
+            Connection conn = KONEKSI.getConnection();
+            String sql = "INSERT INTO barang (nama_barang, kategori, jumlah) VALUES (?, ?, ?)";
+            PreparedStatement pst = conn.prepareStatement(sql);
+            
+            pst.setString(1, nama);
+            pst.setString(2, kategori);
+            pst.setInt(3, jumlah);
+            
+            int hasil = pst.executeUpdate();
+            
+            if (hasil > 0) {
+                return true; // UBAH KE TRUE JIKA DATA MASUK
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
