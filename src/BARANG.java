@@ -260,7 +260,31 @@ public class BARANG extends javax.swing.JFrame {
 
     
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = table_barang.getSelectedRow();
+        
+        if (selectedRow != 1){
+            String nama = table_barang.getValueAt(selectedRow, 0).toString();
+            
+            int confirm = javax.swing.JOptionPane.showConfirmDialog(this, 
+                    "Apakah anda yakin ingin menghapus " + nama + "?", 
+                    "Konfirmasi Hapus", javax.swing.JOptionPane.YES_NO_OPTION);
+            
+            if(confirm == javax.swing.JOptionPane.YES_OPTION){
+                boolean isDeleted = DATABASE.hapus_barang(nama);
+                
+                if (isDeleted){
+                
+                    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
+                    model.removeRow(selectedRow);
+                    
+                    javax.swing.JOptionPane.showMessageDialog(this, "Data berhasil dihapus!");
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Gagal menghapus data dari database!");
+                }
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Pilih baris di tabel yang ingin di hapus terlebih dahulu!");
+        }
     }//GEN-LAST:event_hapusActionPerformed
 
     

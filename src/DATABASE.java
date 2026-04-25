@@ -79,4 +79,23 @@ public class DATABASE {
         }
         return false;
     }
+    
+    //========================================================================================================================
+    
+    public static boolean hapus_barang(String nama){
+        try {
+            
+            String sql = "DELETE FROM barang WHERE nama_barang = ?";
+            java.sql.Connection conn = KONEKSI.getConnection();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, nama);
+            
+            int rowAffected = pst.executeUpdate();
+            return rowAffected > 0;
+        } catch (java.sql.SQLException e){
+            System.out.println("Error Hapus: " + e.getMessage());
+            return false;
+        }
+    }
 }
+
