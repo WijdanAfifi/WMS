@@ -289,7 +289,35 @@ public class BARANG extends javax.swing.JFrame {
 
     
     private void ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = table_barang.getSelectedRow();
+        
+        if(selectedRow != -1){
+            String namaBaru = nama_barang.getText();
+            String kategoriBaru = (String) kategori_barang.getSelectedItem();
+            int jumlahBaru = (int) jumlah_barang.getValue();
+            
+            if(!namaBaru.isEmpty()){
+                boolean isUpdated = DATABASE.ubah_barang(namaBaru, kategoriBaru, jumlahBaru);
+                
+                if(isUpdated){
+                    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
+                    model.setValueAt(namaBaru, selectedRow, 0);
+                    model.setValueAt(kategoriBaru, selectedRow, 1);
+                    model.setValueAt(jumlahBaru, selectedRow, 2);
+                    
+                    javax.swing.JOptionPane.showMessageDialog(this, "Data berhasil diubah!");
+                    
+                    nama_barang.setText("");
+                    jumlah_barang.setValue(1);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Gagal mengubah data di database!");
+                }
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, "Nama barang tidak boleh kosong");
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Pilih baris di tabel yang ingin diubah terlebih dahulu");
+        }
     }//GEN-LAST:event_ubahActionPerformed
 
     private void search_filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_filterActionPerformed

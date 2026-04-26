@@ -21,7 +21,7 @@ public class DATABASE {
 
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Selamat Datang " + rs.getString("full_name"));
-                return true; // UBAH KE TRUE JIKA BERHASIL
+                return true; 
             } else {
                 JOptionPane.showMessageDialog(null, "LOGIN GAGAL");
             } 
@@ -94,6 +94,26 @@ public class DATABASE {
             return rowAffected > 0;
         } catch (java.sql.SQLException e){
             System.out.println("Error Hapus: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    //================================================================================================
+    public static boolean ubah_barang(String nama, String kategori, int jumlah){
+        try{
+            
+            String sql = "UPDATE barang SET kategori = ? WHERE nama_barang = ?";
+            java.sql.Connection conn =  KONEKSI.getConnection();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            
+            pst.setString(1, kategori);
+            pst.setInt(2, jumlah);
+            pst.setString(3, nama);
+            
+            int rowAffected = pst.executeUpdate();
+            return rowAffected > 0;
+        } catch(java.sql.SQLException e){
+            System.out.println("Error Update: " + e.getMessage());
             return false;
         }
     }
