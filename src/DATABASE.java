@@ -4,10 +4,10 @@
 
 import java.sql.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class DATABASE {
-    
-    
+   // [LOGIN.java]    
     public static boolean login(String username, String password) {
         try {
             Connection conn = KONEKSI.getConnection();
@@ -19,9 +19,9 @@ public class DATABASE {
 
             ResultSet rs = pst.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next()) {     
                 JOptionPane.showMessageDialog(null, "Selamat Datang " + rs.getString("full_name"));
-                return true; 
+                return true; // UBAH KE TRUE JIKA BERHASIL
             } else {
                 JOptionPane.showMessageDialog(null, "LOGIN GAGAL");
             } 
@@ -32,7 +32,7 @@ public class DATABASE {
     }
     
 //=================================================================================================================== 
-    
+    // [REGISTER.java]
     public static boolean register(String username, String password, String jabatan, String nama_lengkap) {
         try {
             Connection conn = KONEKSI.getConnection();
@@ -57,7 +57,7 @@ public class DATABASE {
     }
     
 //=================================================================================================================== 
-    
+    // [BARANG.java] Button ADD
     public static boolean stok_barang(String nama, String kategori, int jumlah) {
         try {
             Connection conn = KONEKSI.getConnection();
@@ -69,25 +69,21 @@ public class DATABASE {
             pst.setInt(3, jumlah);
             
             int hasil = pst.executeUpdate();
-            
-            if (hasil > 0) {
-                return true; 
-            }
-            
+            return hasil > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
     
-    //========================================================================================================================
-    
+//========================================================================================================================
+    // [BARANG.java] Button HAPUS
     public static boolean hapus_barang(String nama){
-        try {
+        try {            
+            Connection conn = KONEKSI.getConnection();
+            String sql = "DELETE FROM barang WHERE nama_barang = ?";            
+            PreparedStatement pst = conn.prepareStatement(sql);
             
-            String sql = "DELETE FROM barang WHERE nama_barang = ?";
-            java.sql.Connection conn = KONEKSI.getConnection();
-            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, nama);
             
             int rowAffected = pst.executeUpdate();
@@ -98,7 +94,36 @@ public class DATABASE {
         }
     }
     
-    //================================================================================================
+//========================================================================================================================    
+    // [STOK_BARANG] Tampilkan Isi Tabel
+    public DefaultTableModel getModelBarang() {
+        DefaultTableModel model = new DefaultTableModel();
+        
+        model.addColumn("Nama Barang");
+        model.addColumn("Kategori");
+        model.addColumn("Jumlah");
+
+        try {
+            Connection conn = KONEKSI.getConnection();
+            String sql = "SELECT * FROM barang";
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getString("nama_barang"),
+                    rs.getString("kategori"),
+                    rs.getInt("jumlah")
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return model;
+    }
+    
+//========================================================================================================================        
     public static boolean ubah_barang(String nama, String kategori, int jumlah){
         try{
             

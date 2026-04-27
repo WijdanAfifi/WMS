@@ -1,15 +1,16 @@
 /**
- * @author Kelompok 2 - R6P
+ * @author Wijdan Afifi
  */
-
+import javax.swing.*;
 public class BARANG extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BARANG.class.getName());
-
+        DATABASE db = new DATABASE();
+        
     public BARANG() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        refreshTable();
         
         table_barang.getTableHeader().setOpaque(false);
         table_barang.getTableHeader().setBackground(new java.awt.Color(43, 57, 144));
@@ -27,20 +28,20 @@ public class BARANG extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Sidebar_login = new javax.swing.JPanel();
+        Judul = new javax.swing.JLabel();
+        Label_namabrg = new javax.swing.JLabel();
         nama_barang = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        Label_kategoribrg = new javax.swing.JLabel();
         kategori_barang = new javax.swing.JComboBox<>();
+        Label_jumlahbrg = new javax.swing.JLabel();
         jumlah_barang = new javax.swing.JSpinner();
         jSeparator4 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
         tambah = new javax.swing.JButton();
         hapus = new javax.swing.JButton();
         ubah = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         search_filter = new javax.swing.JComboBox<>();
         search_nama = new javax.swing.JTextField();
         search = new javax.swing.JButton();
@@ -50,121 +51,139 @@ public class BARANG extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(248, 249, 250));
+        Sidebar_login.setBackground(new java.awt.Color(43, 57, 144));
+        Sidebar_login.setPreferredSize(new java.awt.Dimension(300, 600));
 
-        jPanel2.setBackground(new java.awt.Color(43, 57, 144));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        Judul.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Judul.setForeground(new java.awt.Color(255, 255, 255));
+        Judul.setText("BARANG MASUK");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("DATA BARANG");
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nama Barang");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Kategori Barang");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Jumlah");
+        Label_namabrg.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        Label_namabrg.setForeground(new java.awt.Color(255, 255, 255));
+        Label_namabrg.setText("Nama Barang");
 
         nama_barang.setBackground(new java.awt.Color(43, 57, 144));
+        nama_barang.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         nama_barang.setForeground(new java.awt.Color(255, 255, 255));
         nama_barang.setBorder(null);
 
+        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+
+        Label_kategoribrg.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        Label_kategoribrg.setForeground(new java.awt.Color(255, 255, 255));
+        Label_kategoribrg.setText("Kategori Barang");
+
         kategori_barang.setBackground(new java.awt.Color(43, 57, 144));
+        kategori_barang.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         kategori_barang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Protein", "Karbohidat" }));
 
+        Label_jumlahbrg.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        Label_jumlahbrg.setForeground(new java.awt.Color(255, 255, 255));
+        Label_jumlahbrg.setText("Jumlah");
+
+        jumlah_barang.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jumlah_barang.setValue(1);
 
         jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
 
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
-
-        tambah.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        tambah.setBackground(new java.awt.Color(106, 119, 198));
+        tambah.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        tambah.setForeground(new java.awt.Color(255, 255, 255));
         tambah.setText("TAMBAH");
+        tambah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tambah.setHideActionText(true);
         tambah.addActionListener(this::tambahActionPerformed);
 
         hapus.setBackground(new java.awt.Color(226, 35, 26));
-        hapus.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        hapus.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         hapus.setForeground(new java.awt.Color(255, 255, 255));
         hapus.setText("HAPUS");
+        hapus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hapus.addActionListener(this::hapusActionPerformed);
 
-        ubah.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        ubah.setBackground(new java.awt.Color(106, 119, 198));
+        ubah.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        ubah.setForeground(new java.awt.Color(255, 255, 255));
         ubah.setText("UBAH");
+        ubah.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ubah.addActionListener(this::ubahActionPerformed);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2)
+        javax.swing.GroupLayout Sidebar_loginLayout = new javax.swing.GroupLayout(Sidebar_login);
+        Sidebar_login.setLayout(Sidebar_loginLayout);
+        Sidebar_loginLayout.setHorizontalGroup(
+            Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Sidebar_loginLayout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addComponent(Judul)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Sidebar_loginLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Label_namabrg)
                         .addComponent(jSeparator3)
                         .addComponent(nama_barang)
-                        .addComponent(jLabel4)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Label_jumlahbrg)
+                        .addGroup(Sidebar_loginLayout.createSequentialGroup()
                             .addComponent(tambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGap(67, 67, 67)
                             .addComponent(ubah))
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Label_kategoribrg)
                         .addComponent(kategori_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator4)
-                        .addComponent(jumlah_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jumlah_barang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)))
+                    .addGroup(Sidebar_loginLayout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(hapus))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel1)))
-                .addGap(32, 32, 32))
+                        .addComponent(hapus)))
+                .addGap(30, 30, 30))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel2)
+        Sidebar_loginLayout.setVerticalGroup(
+            Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Sidebar_loginLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(Judul)
+                .addGap(55, 55, 55)
+                .addComponent(Label_namabrg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nama_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(Label_kategoribrg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(kategori_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(Label_jumlahbrg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jumlah_barang, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tambah)
                     .addComponent(ubah))
                 .addGap(28, 28, 28)
                 .addComponent(hapus)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
-        search_filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Semua", "Protein", "Karbohidrat" }));
+        getContentPane().add(Sidebar_login, java.awt.BorderLayout.LINE_START);
+
+        jPanel2.setBackground(new java.awt.Color(175, 186, 255));
+
+        search_filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Protein", "Karbohidrat" }));
         search_filter.addActionListener(this::search_filterActionPerformed);
 
         search_nama.setText("Nama Barang");
 
+        search.setBackground(new java.awt.Color(66, 87, 215));
         search.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        search.setForeground(new java.awt.Color(255, 255, 255));
         search.setText("CARI");
+        search.addActionListener(this::searchActionPerformed);
 
         table_barang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,106 +196,89 @@ public class BARANG extends javax.swing.JFrame {
         table_barang.setRowHeight(25);
         jScrollPane1.setViewportView(table_barang);
 
+        back_dashboard.setBackground(new java.awt.Color(66, 87, 215));
         back_dashboard.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        back_dashboard.setForeground(new java.awt.Color(255, 255, 255));
         back_dashboard.setText("BACK");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(search_filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(search_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(back_dashboard)))
-                .addGap(47, 47, 47))
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(back_dashboard)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(search_filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(search_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(107, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(98, 98, 98)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(search_filter, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(search_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(search)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(back_dashboard)
-                .addGap(72, 72, 72))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
         String nama = nama_barang.getText();
         String kategori = (String) kategori_barang.getSelectedItem();
         int jumlah = (int) jumlah_barang.getValue();
 
         if (!nama.isEmpty()) {
-            
+
             javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
 
-            
             boolean update = DATABASE.stok_barang(nama, kategori, jumlah);
 
-            
             javax.swing.JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan ke Tabel!");
             model.addRow(new Object[]{nama, kategori, jumlah});
 
-            
             nama_barang.setText("");
-            jumlah_barang.setValue(1); 
+            jumlah_barang.setValue(1);
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Isi Nama Barang terlebih dahulu!");
         }
     }//GEN-LAST:event_tambahActionPerformed
 
-    
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
         int selectedRow = table_barang.getSelectedRow();
-        
+
         if (selectedRow != 1){
             String nama = table_barang.getValueAt(selectedRow, 0).toString();
-            
-            int confirm = javax.swing.JOptionPane.showConfirmDialog(this, 
-                    "Apakah anda yakin ingin menghapus " + nama + "?", 
-                    "Konfirmasi Hapus", javax.swing.JOptionPane.YES_NO_OPTION);
-            
+
+            int confirm = javax.swing.JOptionPane.showConfirmDialog(this,
+                "Apakah anda yakin ingin menghapus " + nama + "?",
+                "Konfirmasi Hapus", javax.swing.JOptionPane.YES_NO_OPTION);
+
             if(confirm == javax.swing.JOptionPane.YES_OPTION){
                 boolean isDeleted = DATABASE.hapus_barang(nama);
-                
+
                 if (isDeleted){
-                
+
                     javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
                     model.removeRow(selectedRow);
-                    
+
                     javax.swing.JOptionPane.showMessageDialog(this, "Data berhasil dihapus!");
                 } else {
                     javax.swing.JOptionPane.showMessageDialog(this, "Gagal menghapus data dari database!");
@@ -287,7 +289,6 @@ public class BARANG extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_hapusActionPerformed
 
-    
     private void ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahActionPerformed
         int selectedRow = table_barang.getSelectedRow();
         
@@ -305,24 +306,28 @@ public class BARANG extends javax.swing.JFrame {
                     model.setValueAt(kategoriBaru, selectedRow, 1);
                     model.setValueAt(jumlahBaru, selectedRow, 2);
                     
-                    javax.swing.JOptionPane.showMessageDialog(this, "Data berhasil diubah!");
+                    JOptionPane.showMessageDialog(this, "Data berhasil diubah!");
                     
                     nama_barang.setText("");
                     jumlah_barang.setValue(1);
                 } else {
-                    javax.swing.JOptionPane.showMessageDialog(this, "Gagal mengubah data di database!");
+                    JOptionPane.showMessageDialog(this, "Gagal mengubah data di database!");
                 }
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Nama barang tidak boleh kosong");
+                JOptionPane.showMessageDialog(this, "Nama barang tidak boleh kosong");
             }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Pilih baris di tabel yang ingin diubah terlebih dahulu");
+            JOptionPane.showMessageDialog(this, "Pilih baris di tabel yang ingin diubah terlebih dahulu");
         }
     }//GEN-LAST:event_ubahActionPerformed
 
     private void search_filterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_filterActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_search_filterActionPerformed
+
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,15 +353,19 @@ public class BARANG extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new BARANG().setVisible(true));
     }
+    
+    public void refreshTable() {
+        table_barang.setModel(db.getModelBarang());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Judul;
+    private javax.swing.JLabel Label_jumlahbrg;
+    private javax.swing.JLabel Label_kategoribrg;
+    private javax.swing.JLabel Label_namabrg;
+    private javax.swing.JPanel Sidebar_login;
     private javax.swing.JButton back_dashboard;
     private javax.swing.JButton hapus;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator3;

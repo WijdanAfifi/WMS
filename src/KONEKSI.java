@@ -1,10 +1,7 @@
 /**
- * @author Kelompok 2 - R6P
+ * @author Wijdan Afifi
  */
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class KONEKSI {
     private static Connection conn;
@@ -23,6 +20,7 @@ public class KONEKSI {
                 e.printStackTrace();
             }
         }
+        
         return conn;
     }
 }

@@ -1,9 +1,7 @@
 /**
- * @author Kelompok 2 - R6P
+ * @author Wijdan Afifi
  */
-
 import javax.swing.*;
-
 public class REGISTER extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(REGISTER.class.getName());
@@ -22,218 +20,191 @@ public class REGISTER extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        full_name = new javax.swing.JTextField();
-        username_reg = new javax.swing.JTextField();
-        password_reg = new javax.swing.JPasswordField();
-        Admin_Hamada = new javax.swing.JRadioButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        Sidebar_regis = new javax.swing.JPanel();
+        Judul = new javax.swing.JLabel();
+        Nama_lengkap = new javax.swing.JLabel();
+        nama_regis = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        Jabatan = new javax.swing.JLabel();
+        Admin = new javax.swing.JRadioButton();
         Staff = new javax.swing.JRadioButton();
-        Admin_Kausar = new javax.swing.JRadioButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
+        Username = new javax.swing.JLabel();
+        usn_regis = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
+        Password = new javax.swing.JLabel();
+        pass_regis = new javax.swing.JPasswordField();
+        jSeparator4 = new javax.swing.JSeparator();
         Daftar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(43, 57, 144));
-        jPanel2.setForeground(new java.awt.Color(102, 102, 102));
+        Sidebar_regis.setBackground(new java.awt.Color(43, 57, 144));
+        Sidebar_regis.setPreferredSize(new java.awt.Dimension(300, 600));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("REGISTER");
+        Judul.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Judul.setForeground(new java.awt.Color(255, 255, 255));
+        Judul.setText("REGISTER");
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nama Lengkap");
+        Nama_lengkap.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        Nama_lengkap.setForeground(new java.awt.Color(255, 255, 255));
+        Nama_lengkap.setText("Nama Lengkap");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Jabatan");
+        nama_regis.setBackground(new java.awt.Color(43, 57, 144));
+        nama_regis.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        nama_regis.setForeground(new java.awt.Color(255, 255, 255));
+        nama_regis.setBorder(null);
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Password");
+        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Username");
+        Jabatan.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        Jabatan.setForeground(new java.awt.Color(255, 255, 255));
+        Jabatan.setText("Jabatan");
 
-        full_name.setBackground(new java.awt.Color(43, 57, 144));
-        full_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        full_name.setForeground(new java.awt.Color(255, 255, 255));
-        full_name.setBorder(null);
+        buttonGroup1.add(Admin);
+        Admin.setForeground(new java.awt.Color(255, 255, 255));
+        Admin.setText("Admin");
 
-        username_reg.setBackground(new java.awt.Color(43, 57, 144));
-        username_reg.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        username_reg.setForeground(new java.awt.Color(255, 255, 255));
-        username_reg.setBorder(null);
-        username_reg.addActionListener(this::username_regActionPerformed);
-
-        password_reg.setBackground(new java.awt.Color(43, 57, 144));
-        password_reg.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        password_reg.setForeground(new java.awt.Color(255, 255, 255));
-        password_reg.setBorder(null);
-        password_reg.addActionListener(this::password_regActionPerformed);
-
-        Admin_Hamada.setForeground(new java.awt.Color(255, 255, 255));
-        Admin_Hamada.setText("Admin Hamada");
-
+        buttonGroup1.add(Staff);
         Staff.setForeground(new java.awt.Color(255, 255, 255));
         Staff.setText("Staff");
-        Staff.addActionListener(this::StaffActionPerformed);
 
-        Admin_Kausar.setForeground(new java.awt.Color(255, 255, 255));
-        Admin_Kausar.setText("Admin Kausar");
-        Admin_Kausar.addActionListener(this::Admin_KausarActionPerformed);
+        Username.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        Username.setForeground(new java.awt.Color(255, 255, 255));
+        Username.setText("Username");
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        usn_regis.setBackground(new java.awt.Color(43, 57, 144));
+        usn_regis.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        usn_regis.setForeground(new java.awt.Color(255, 255, 255));
+        usn_regis.setBorder(null);
 
         jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
 
-        Daftar.setBackground(new java.awt.Color(226, 35, 26));
-        Daftar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Password.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        Password.setForeground(new java.awt.Color(255, 255, 255));
+        Password.setText("Password");
+
+        pass_regis.setBackground(new java.awt.Color(43, 57, 144));
+        pass_regis.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        pass_regis.setForeground(new java.awt.Color(255, 255, 255));
+        pass_regis.setBorder(null);
+
+        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
+        jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
+
+        Daftar.setBackground(new java.awt.Color(106, 119, 198));
+        Daftar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         Daftar.setForeground(new java.awt.Color(255, 255, 255));
         Daftar.setText("DAFTAR");
+        Daftar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Daftar.addActionListener(this::DaftarActionPerformed);
+
+        javax.swing.GroupLayout Sidebar_regisLayout = new javax.swing.GroupLayout(Sidebar_regis);
+        Sidebar_regis.setLayout(Sidebar_regisLayout);
+        Sidebar_regisLayout.setHorizontalGroup(
+            Sidebar_regisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Sidebar_regisLayout.createSequentialGroup()
+                .addGroup(Sidebar_regisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Sidebar_regisLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(Sidebar_regisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(nama_regis, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(Sidebar_regisLayout.createSequentialGroup()
+                                .addComponent(Nama_lengkap)
+                                .addGap(132, 132, 132))
+                            .addGroup(Sidebar_regisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Jabatan)
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(Sidebar_regisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Username)
+                                    .addComponent(Password)
+                                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(usn_regis, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pass_regis)
+                                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(Sidebar_regisLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(Admin)
+                        .addGap(46, 46, 46)
+                        .addComponent(Staff))
+                    .addGroup(Sidebar_regisLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(Judul))
+                    .addGroup(Sidebar_regisLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(Daftar)))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        Sidebar_regisLayout.setVerticalGroup(
+            Sidebar_regisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Sidebar_regisLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addComponent(Judul)
+                .addGap(30, 30, 30)
+                .addComponent(Nama_lengkap)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nama_regis, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Jabatan)
+                .addGap(7, 7, 7)
+                .addGroup(Sidebar_regisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Staff)
+                    .addComponent(Admin))
+                .addGap(26, 26, 26)
+                .addComponent(Username)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usn_regis, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Password)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pass_regis, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(Daftar)
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(Sidebar_regis, java.awt.BorderLayout.LINE_START);
+
+        jPanel2.setBackground(new java.awt.Color(175, 186, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(Daftar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(159, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(148, 148, 148))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Admin_Hamada)
-                                .addGap(18, 18, 18)
-                                .addComponent(Staff)
-                                .addGap(18, 18, 18)
-                                .addComponent(Admin_Kausar))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4)
-                                .addComponent(jSeparator3)
-                                .addComponent(jSeparator2)
-                                .addComponent(username_reg)
-                                .addComponent(password_reg, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(full_name)
-                                .addComponent(jLabel3)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2)))
-                        .addGap(52, 52, 52))))
+            .addGap(0, 724, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jLabel1)
-                .addGap(59, 59, 59)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(full_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Admin_Hamada)
-                    .addComponent(Staff)
-                    .addComponent(Admin_Kausar))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(username_reg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(password_reg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(Daftar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 600, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void StaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StaffActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StaffActionPerformed
-
-    private void Admin_KausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Admin_KausarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Admin_KausarActionPerformed
-
-    private void username_regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_regActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_username_regActionPerformed
-
-    private void password_regActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_regActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_password_regActionPerformed
-
     private void DaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarActionPerformed
-        String username = username_reg.getText();
-        String password = new String(password_reg.getPassword());
-        String nama_lengkap = full_name.getText();
+        String username = usn_regis.getText();
+        String password = new String(pass_regis.getPassword());
+        String nama_lengkap = nama_regis.getText();
         String jabatan = "";
 
-        if(Admin_Hamada.isSelected()) {
+        if(Admin.isSelected()) {
             jabatan = "Admin Hamada";
         } else if(Staff.isSelected()) {
             jabatan = "Staff";
-        } else if(Admin_Kausar.isSelected()) {
-            jabatan = "Admin Kausar";
-        }
+        } 
 
         boolean Reg = DATABASE.register(username, password, jabatan, nama_lengkap);
-
         if (Reg) {
             JOptionPane.showMessageDialog(this, "Registrasi Berhasil!");
             
@@ -273,22 +244,22 @@ public class REGISTER extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton Admin_Hamada;
-    private javax.swing.JRadioButton Admin_Kausar;
+    private javax.swing.JRadioButton Admin;
     private javax.swing.JButton Daftar;
+    private javax.swing.JLabel Jabatan;
+    private javax.swing.JLabel Judul;
+    private javax.swing.JLabel Nama_lengkap;
+    private javax.swing.JLabel Password;
+    private javax.swing.JPanel Sidebar_regis;
     private javax.swing.JRadioButton Staff;
-    private javax.swing.JTextField full_name;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel Username;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JPasswordField password_reg;
-    private javax.swing.JTextField username_reg;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JTextField nama_regis;
+    private javax.swing.JPasswordField pass_regis;
+    private javax.swing.JTextField usn_regis;
     // End of variables declaration//GEN-END:variables
 }
