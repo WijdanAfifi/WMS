@@ -165,10 +165,12 @@ public class LOGIN extends javax.swing.JFrame {
         
         boolean log = DATABASE.login(username, password);
         
-        BARANG halamanBarang = new BARANG();
-        halamanBarang.setVisible(true);
-        halamanBarang.setLocationRelativeTo(null);
-        this.dispose();
+        if (log){
+            DASHBOARD board = new DASHBOARD();
+            board.setVisible(true);
+            board.setLocationRelativeTo(null);
+            this.dispose();
+        }
     }//GEN-LAST:event_LoginActionPerformed
 
     private void Register_NowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Register_NowMouseClicked

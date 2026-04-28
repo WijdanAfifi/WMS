@@ -2,6 +2,7 @@
  * @author Wijdan Afifi
  */
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 public class BARANG extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BARANG.class.getName());
@@ -134,7 +135,7 @@ public class BARANG extends javax.swing.JFrame {
                         .addComponent(kategori_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jumlah_barang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)))
+                            .addComponent(jumlah_barang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)))
                     .addGroup(Sidebar_loginLayout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addComponent(hapus)))
@@ -174,6 +175,7 @@ public class BARANG extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(175, 186, 255));
 
+        search_filter.setForeground(new java.awt.Color(255, 255, 255));
         search_filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Protein", "Karbohidrat" }));
         search_filter.addActionListener(this::search_filterActionPerformed);
 
@@ -200,6 +202,13 @@ public class BARANG extends javax.swing.JFrame {
         back_dashboard.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         back_dashboard.setForeground(new java.awt.Color(255, 255, 255));
         back_dashboard.setText("BACK");
+        back_dashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back_dashboard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                back_dashboardMouseClicked(evt);
+            }
+        });
+        back_dashboard.addActionListener(this::back_dashboardActionPerformed);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -247,9 +256,9 @@ public class BARANG extends javax.swing.JFrame {
 
         if (!nama.isEmpty()) {
 
-            javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
+            DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
 
-            boolean update = DATABASE.stok_barang(nama, kategori, jumlah);
+            boolean update = DATABASE.tambah_barang(nama, kategori, jumlah);
 
             javax.swing.JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan ke Tabel!");
             model.addRow(new Object[]{nama, kategori, jumlah});
@@ -267,30 +276,31 @@ public class BARANG extends javax.swing.JFrame {
         if (selectedRow != 1){
             String nama = table_barang.getValueAt(selectedRow, 0).toString();
 
-            int confirm = javax.swing.JOptionPane.showConfirmDialog(this,
+            int confirm = JOptionPane.showConfirmDialog(this,
                 "Apakah anda yakin ingin menghapus " + nama + "?",
-                "Konfirmasi Hapus", javax.swing.JOptionPane.YES_NO_OPTION);
+                "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
 
             if(confirm == javax.swing.JOptionPane.YES_OPTION){
                 boolean isDeleted = DATABASE.hapus_barang(nama);
 
                 if (isDeleted){
 
-                    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
+                    DefaultTableModel model = (DefaultTableModel) table_barang.getModel();
                     model.removeRow(selectedRow);
 
-                    javax.swing.JOptionPane.showMessageDialog(this, "Data berhasil dihapus!");
+                    JOptionPane.showMessageDialog(this, "Data berhasil dihapus!");
                 } else {
-                    javax.swing.JOptionPane.showMessageDialog(this, "Gagal menghapus data dari database!");
+                    JOptionPane.showMessageDialog(this, "Gagal menghapus data dari database!");
                 }
             }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Pilih baris di tabel yang ingin di hapus terlebih dahulu!");
+            JOptionPane.showMessageDialog(this, "Pilih baris di tabel yang ingin di hapus terlebih dahulu!");
         }
     }//GEN-LAST:event_hapusActionPerformed
 
     private void ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahActionPerformed
         int selectedRow = table_barang.getSelectedRow();
+        String pilihNama = table_barang.getValueAt(selectedRow, 0).toString();
         
         if(selectedRow != -1){
             String namaBaru = nama_barang.getText();
@@ -298,10 +308,10 @@ public class BARANG extends javax.swing.JFrame {
             int jumlahBaru = (int) jumlah_barang.getValue();
             
             if(!namaBaru.isEmpty()){
-                boolean isUpdated = DATABASE.ubah_barang(namaBaru, kategoriBaru, jumlahBaru);
+                boolean isUpdated = DATABASE.ubah_barang(pilihNama, kategoriBaru, jumlahBaru, namaBaru);
                 
                 if(isUpdated){
-                    javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
+                    DefaultTableModel model = (DefaultTableModel) table_barang.getModel();
                     model.setValueAt(namaBaru, selectedRow, 0);
                     model.setValueAt(kategoriBaru, selectedRow, 1);
                     model.setValueAt(jumlahBaru, selectedRow, 2);
@@ -328,6 +338,16 @@ public class BARANG extends javax.swing.JFrame {
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchActionPerformed
+
+    private void back_dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_dashboardMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_back_dashboardMouseClicked
+
+    private void back_dashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_dashboardActionPerformed
+        DASHBOARD board = new DASHBOARD();
+        board.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_back_dashboardActionPerformed
 
     /**
      * @param args the command line arguments

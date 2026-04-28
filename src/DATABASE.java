@@ -58,7 +58,7 @@ public class DATABASE {
     
 //=================================================================================================================== 
     // [BARANG.java] Button ADD
-    public static boolean stok_barang(String nama, String kategori, int jumlah) {
+    public static boolean tambah_barang(String nama, String kategori, int jumlah) {
         try {
             Connection conn = KONEKSI.getConnection();
             String sql = "INSERT INTO barang (nama_barang, kategori, jumlah) VALUES (?, ?, ?)";
@@ -94,6 +94,28 @@ public class DATABASE {
         }
     }
     
+//========================================================================================================================        
+    public static boolean ubah_barang(String nama, String kategori, int jumlah, String baru){
+        try{            
+            String sql = "UPDATE barang SET nama_barang=?, kategori=?, jumlah=? WHERE nama_barang=? ";
+            Connection conn =  KONEKSI.getConnection();
+            PreparedStatement pst = conn.prepareStatement(sql);
+            
+            pst.setString(1, baru);
+            pst.setString(2, kategori);
+            pst.setInt(3, jumlah);
+            pst.setString(4, nama);
+            
+            
+            int rowAffected = pst.executeUpdate();
+            return rowAffected > 0;
+            
+        } catch(java.sql.SQLException e){
+            System.out.println("Error Update: " + e.getMessage());
+            return false;
+        }
+    }
+
 //========================================================================================================================    
     // [STOK_BARANG] Tampilkan Isi Tabel
     public DefaultTableModel getModelBarang() {
@@ -122,25 +144,6 @@ public class DATABASE {
         
         return model;
     }
-    
-//========================================================================================================================        
-    public static boolean ubah_barang(String nama, String kategori, int jumlah){
-        try{
-            
-            String sql = "UPDATE barang SET kategori = ? WHERE nama_barang = ?";
-            java.sql.Connection conn =  KONEKSI.getConnection();
-            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            
-            pst.setString(1, kategori);
-            pst.setInt(2, jumlah);
-            pst.setString(3, nama);
-            
-            int rowAffected = pst.executeUpdate();
-            return rowAffected > 0;
-        } catch(java.sql.SQLException e){
-            System.out.println("Error Update: " + e.getMessage());
-            return false;
-        }
-    }
+        
 }
 

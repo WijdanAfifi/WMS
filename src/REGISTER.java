@@ -98,7 +98,7 @@ public class REGISTER extends javax.swing.JFrame {
         Daftar.setBackground(new java.awt.Color(106, 119, 198));
         Daftar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         Daftar.setForeground(new java.awt.Color(255, 255, 255));
-        Daftar.setText("DAFTAR");
+        Daftar.setText("SIGN UP");
         Daftar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Daftar.addActionListener(this::DaftarActionPerformed);
 
