@@ -31,6 +31,7 @@ public class LOGIN extends javax.swing.JFrame {
         Login = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         Register_Now = new javax.swing.JLabel();
+        Cancel = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -87,6 +88,13 @@ public class LOGIN extends javax.swing.JFrame {
             }
         });
 
+        Cancel.setBackground(new java.awt.Color(226, 35, 26));
+        Cancel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        Cancel.setForeground(new java.awt.Color(255, 255, 255));
+        Cancel.setText("CANCEL");
+        Cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Cancel.addActionListener(this::CancelActionPerformed);
+
         javax.swing.GroupLayout Sidebar_loginLayout = new javax.swing.GroupLayout(Sidebar_login);
         Sidebar_login.setLayout(Sidebar_loginLayout);
         Sidebar_loginLayout.setHorizontalGroup(
@@ -97,20 +105,21 @@ public class LOGIN extends javax.swing.JFrame {
                         .addGap(121, 121, 121)
                         .addComponent(Judul))
                     .addGroup(Sidebar_loginLayout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(Login))
-                    .addGroup(Sidebar_loginLayout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
+                            .addComponent(Register_Now)
                             .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(Sidebar_loginLayout.createSequentialGroup()
+                                    .addComponent(Login)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Cancel))
                                 .addComponent(Username)
                                 .addComponent(Password)
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(usn_login, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(pass_login)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Register_Now))))
+                                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         Sidebar_loginLayout.setVerticalGroup(
@@ -130,9 +139,11 @@ public class LOGIN extends javax.swing.JFrame {
                 .addComponent(pass_login, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(Login)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addGap(56, 56, 56)
+                .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Login)
+                    .addComponent(Cancel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Register_Now)
@@ -151,7 +162,7 @@ public class LOGIN extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 620, Short.MAX_VALUE)
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -180,6 +191,11 @@ public class LOGIN extends javax.swing.JFrame {
         this.dispose(); 
     }//GEN-LAST:event_Register_NowMouseClicked
 
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_CancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -206,6 +222,7 @@ public class LOGIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cancel;
     private javax.swing.JLabel Judul;
     private javax.swing.JButton Login;
     private javax.swing.JLabel Password;
