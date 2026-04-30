@@ -1,4 +1,4 @@
-1.)   [ LOGIN.java ] Tambahkan Button "CANCEL"
+1.)   [ LOGIN.java ] Tambahkan Button "CANCEL"    (.....)
 
 
 
@@ -8,4 +8,96 @@
 
 			- Tambahkan Bagian Combo Box "KATEGORI" [Protein, Karbohidrat, (kategori 3), (kategori 4), ... ]
 
-			- Judulnya Diganti, "BARANG MASUK" ===> "DATA BARANG"
+			- Judulnya Diganti, "BARANG MASUK" ===> "DATA BARANG" ✅
+
+
+==================================================================================================================================
+
+1. Data Barang
+
+Ini yang paling utama, jadi harus cukup lengkap.
+
+Biasanya berisi:
+
+ID Barang (kode unik, misalnya BRG001)
+Nama Barang
+Kategori (relasi ke Data Kategori)
+Supplier (relasi ke Data Supplier)
+Satuan (pcs, box, kg, dll)
+Harga Beli
+Harga Jual
+Stok
+Stok Minimum (buat peringatan restock)
+Tanggal Masuk (opsional, kalau mau tracking)
+Deskripsi (opsional)
+
+👉 Catatan: Jangan hanya simpan stok, tapi nanti bisa dikembangkan ke riwayat stok (barang masuk/keluar).
+
+2. Data Admin
+
+Digunakan untuk login dan pengelolaan sistem.
+
+Isinya:
+
+ID Admin
+Nama Admin
+Username
+Password
+Role / Level (misalnya: admin, kasir, gudang)
+No HP
+Email (opsional)
+Status (aktif / nonaktif)
+
+👉 Penting: Role ini nanti berguna kalau mau ada hak akses berbeda.
+
+3. Data Kategori
+
+Ini untuk mengelompokkan barang supaya lebih terstruktur.
+
+Isinya:
+
+ID Kategori
+Nama Kategori (contoh: Makanan, Minuman, Elektronik)
+Deskripsi (opsional)
+
+👉 Sederhana, tapi penting untuk filtering dan laporan.
+
+4. Data Supplier
+
+Digunakan untuk mengetahui asal barang.
+
+Isinya:
+
+ID Supplier
+Nama Supplier
+Alamat
+No Telepon
+Email
+Nama Perusahaan (kalau ada)
+Catatan (opsional)
+
+👉 Ini penting kalau nanti ada fitur pembelian barang / restock.
+
+Tambahan Saran (biar sistem kamu lebih “niat”)
+
+Kalau mau sistem kamu lebih lengkap (dan biasanya ini jadi nilai plus di tugas):
+
+Tambahkan tabel:
+
+Barang Masuk
+ID Masuk
+Tanggal
+Supplier
+Barang
+Jumlah
+Barang Keluar
+ID Keluar
+Tanggal
+Barang
+Jumlah
+Tujuan / Keterangan
+
+👉 Ini penting karena:
+
+Stok tidak hanya angka, tapi hasil dari transaksi
+Bisa bikin laporan (harian/bulanan)
