@@ -58,15 +58,16 @@ public class DATABASE {
     
 //=================================================================================================================== 
     // [BARANG.java] Button ADD
-    public static boolean tambah_barang(String nama, String kategori, int jumlah) {
+    public static boolean tambah_barang(String id, String nama, String kategori, int jumlah) {
         try {
             Connection conn = KONEKSI.getConnection();
-            String sql = "INSERT INTO barang (nama_barang, kategori, jumlah) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO barang (id_barang, nama_barang, kategori, jumlah) VALUES (?, ?, ?, ?)";
             PreparedStatement pst = conn.prepareStatement(sql);
             
-            pst.setString(1, nama);
-            pst.setString(2, kategori);
-            pst.setInt(3, jumlah);
+            pst.setString(1, id);
+            pst.setString(2, nama);
+            pst.setString(3, kategori);
+            pst.setInt(4, jumlah);
             
             int hasil = pst.executeUpdate();
             return hasil > 0;
@@ -78,13 +79,13 @@ public class DATABASE {
     
 //========================================================================================================================
     // [BARANG.java] Button HAPUS
-    public static boolean hapus_barang(String nama){
+    public static boolean hapus_barang(String id){
         try {            
             Connection conn = KONEKSI.getConnection();
-            String sql = "DELETE FROM barang WHERE nama_barang = ?";            
+            String sql = "DELETE FROM barang WHERE id_barang = ?";            
             PreparedStatement pst = conn.prepareStatement(sql);
             
-            pst.setString(1, nama);
+            pst.setString(1, id);
             
             int rowAffected = pst.executeUpdate();
             return rowAffected > 0;
@@ -95,32 +96,33 @@ public class DATABASE {
     }
     
 //========================================================================================================================        
-    public static boolean ubah_barang(String nama, String kategori, int jumlah, String baru){
-        try{            
-            String sql = "UPDATE barang SET nama_barang=?, kategori=?, jumlah=? WHERE nama_barang=? ";
-            Connection conn =  KONEKSI.getConnection();
+    public static boolean ubah_barang(String id, String kategori, int jumlah, String namaBaru){
+        try {
+            String sql = "UPDATE barang SET nama_barang=?, kategori=?, jumlah=? WHERE id_barang=?";
+            Connection conn = KONEKSI.getConnection();
             PreparedStatement pst = conn.prepareStatement(sql);
-            
-            pst.setString(1, baru);
+
+            pst.setString(1, namaBaru);
             pst.setString(2, kategori);
             pst.setInt(3, jumlah);
-            pst.setString(4, nama);
-            
-            
+            pst.setString(4, id); 
+
             int rowAffected = pst.executeUpdate();
             return rowAffected > 0;
-            
-        } catch(java.sql.SQLException e){
+
+        } catch (SQLException e) {
             System.out.println("Error Update: " + e.getMessage());
             return false;
         }
-    }
+}
+
 
 //========================================================================================================================    
     // [STOK_BARANG] Tampilkan Isi Tabel
     public DefaultTableModel getModelBarang() {
         DefaultTableModel model = new DefaultTableModel();
         
+        model.addColumn("ID Barang");
         model.addColumn("Nama Barang");
         model.addColumn("Kategori");
         model.addColumn("Jumlah");
@@ -133,6 +135,7 @@ public class DATABASE {
 
             while (rs.next()) {
                 model.addRow(new Object[]{
+                    rs.getString("id_barang"),
                     rs.getString("nama_barang"),
                     rs.getString("kategori"),
                     rs.getInt("jumlah")

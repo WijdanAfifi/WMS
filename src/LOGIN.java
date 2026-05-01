@@ -193,7 +193,20 @@ public class LOGIN extends javax.swing.JFrame {
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
         // TODO add your handling code here:
+         if (usn_login.getText().isEmpty() && pass_login.getText().isEmpty()) {
+        // jika semua field kosong, keluar program
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "Apakah anda yakin ingin keluar?",
+            "Konfirmasi Keluar", JOptionPane.YES_NO_OPTION);
         
+        if (confirm == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    } else {
+        // jika ada isi, reset field saja
+        usn_login.setText("");
+        pass_login.setText("");
+    }
     }//GEN-LAST:event_CancelActionPerformed
 
     /**

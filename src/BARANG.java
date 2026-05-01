@@ -1,6 +1,7 @@
 /**
  * @author Wijdan Afifi
  */
+import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 public class BARANG extends javax.swing.JFrame {
@@ -19,7 +20,7 @@ public class BARANG extends javax.swing.JFrame {
         table_barang.getTableHeader().setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
         table_barang.getTableHeader().setReorderingAllowed(false);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,25 +121,23 @@ public class BARANG extends javax.swing.JFrame {
                 .addComponent(Judul)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Sidebar_loginLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(Label_namabrg)
-                        .addComponent(jSeparator3)
-                        .addComponent(nama_barang)
-                        .addComponent(Label_jumlahbrg)
-                        .addGroup(Sidebar_loginLayout.createSequentialGroup()
-                            .addComponent(tambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGap(67, 67, 67)
-                            .addComponent(ubah))
-                        .addComponent(Label_kategoribrg)
-                        .addComponent(kategori_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jumlah_barang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)))
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Label_namabrg)
+                    .addComponent(jSeparator3)
+                    .addComponent(nama_barang)
+                    .addComponent(Label_jumlahbrg)
                     .addGroup(Sidebar_loginLayout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(hapus)))
+                        .addComponent(tambah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(50, 50, 50)
+                        .addComponent(ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Label_kategoribrg)
+                    .addComponent(kategori_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator4)
+                    .addComponent(jumlah_barang)
+                    .addGroup(Sidebar_loginLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30))
         );
         Sidebar_loginLayout.setVerticalGroup(
@@ -166,9 +165,9 @@ public class BARANG extends javax.swing.JFrame {
                 .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tambah)
                     .addComponent(ubah))
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(hapus)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         getContentPane().add(Sidebar_login, java.awt.BorderLayout.LINE_START);
@@ -249,7 +248,30 @@ public class BARANG extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public String generateIdBarang() {
+    String newId = "BRG001";
+    
+    try {
+        Connection conn = KONEKSI.getConnection();
+        String query = "SELECT id_barang FROM barang ORDER BY id_barang DESC LIMIT 1";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ResultSet rs = ps.executeQuery();
+        
+        if (rs.next()) {
+            String lastId = rs.getString("id_barang"); // ex: "BRG004"
+            int number = Integer.parseInt(lastId.substring(3)); // ambil angka: 4
+            number++; // jadi 5
+            newId = String.format("BRG%03d", number); // jadi "BRG005"
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    
+    return newId;
+}
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
+        String id = generateIdBarang();
         String nama = nama_barang.getText();
         String kategori = (String) kategori_barang.getSelectedItem();
         int jumlah = (int) jumlah_barang.getValue();
@@ -258,10 +280,10 @@ public class BARANG extends javax.swing.JFrame {
 
             DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
 
-            boolean update = DATABASE.tambah_barang(nama, kategori, jumlah);
+            boolean update = DATABASE.tambah_barang(id, nama, kategori, jumlah);
 
             javax.swing.JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan ke Tabel!");
-            model.addRow(new Object[]{nama, kategori, jumlah});
+            model.addRow(new Object[]{id, nama, kategori, jumlah});
 
             nama_barang.setText("");
             jumlah_barang.setValue(1);
@@ -274,14 +296,15 @@ public class BARANG extends javax.swing.JFrame {
         int selectedRow = table_barang.getSelectedRow();
 
         if (selectedRow != 1){
-            String nama = table_barang.getValueAt(selectedRow, 0).toString();
+            String id = table_barang.getValueAt(selectedRow, 0).toString();
+            String nama = table_barang.getValueAt(selectedRow, 1).toString();
 
             int confirm = JOptionPane.showConfirmDialog(this,
                 "Apakah anda yakin ingin menghapus " + nama + "?",
                 "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
 
             if(confirm == javax.swing.JOptionPane.YES_OPTION){
-                boolean isDeleted = DATABASE.hapus_barang(nama);
+                boolean isDeleted = DATABASE.hapus_barang(id);
 
                 if (isDeleted){
 
@@ -300,21 +323,21 @@ public class BARANG extends javax.swing.JFrame {
 
     private void ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahActionPerformed
         int selectedRow = table_barang.getSelectedRow();
-        String pilihNama = table_barang.getValueAt(selectedRow, 0).toString();
         
         if(selectedRow != -1){
+            String id = table_barang.getValueAt(selectedRow, 0).toString();
             String namaBaru = nama_barang.getText();
             String kategoriBaru = (String) kategori_barang.getSelectedItem();
             int jumlahBaru = (int) jumlah_barang.getValue();
             
             if(!namaBaru.isEmpty()){
-                boolean isUpdated = DATABASE.ubah_barang(pilihNama, kategoriBaru, jumlahBaru, namaBaru);
+                boolean isUpdated = DATABASE.ubah_barang(id, kategoriBaru, jumlahBaru, namaBaru);
                 
                 if(isUpdated){
                     DefaultTableModel model = (DefaultTableModel) table_barang.getModel();
-                    model.setValueAt(namaBaru, selectedRow, 0);
-                    model.setValueAt(kategoriBaru, selectedRow, 1);
-                    model.setValueAt(jumlahBaru, selectedRow, 2);
+                    model.setValueAt(namaBaru, selectedRow, 1);
+                    model.setValueAt(kategoriBaru, selectedRow, 2);
+                    model.setValueAt(jumlahBaru, selectedRow, 3);
                     
                     JOptionPane.showMessageDialog(this, "Data berhasil diubah!");
                     

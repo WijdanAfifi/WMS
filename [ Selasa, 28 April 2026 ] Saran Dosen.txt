@@ -1,10 +1,10 @@
-1.)   [ LOGIN.java ] Tambahkan Button "CANCEL"    (.....)
+1.)   [ LOGIN.java ] Tambahkan Button "CANCEL"    (.....)✅
 
 
 
 2.)   [ BARANG.java ] :	- Tambahkan Fitur Pencarian Barang 
 
-			- Tambahkan Field Tabelnya (ID Barang)
+			- Tambahkan Field Tabelnya (ID Barang)✅
 
 			- Tambahkan Bagian Combo Box "KATEGORI" [Protein, Karbohidrat, (kategori 3), (kategori 4), ... ]
 
