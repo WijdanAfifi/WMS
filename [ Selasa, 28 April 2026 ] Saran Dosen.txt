@@ -2,11 +2,11 @@
 
 
 
-2.)   [ BARANG.java ] :	- Tambahkan Fitur Pencarian Barang 
+2.)   [ BARANG.java ] :	- Tambahkan Fitur Pencarian Barang ✅
 
 			- Tambahkan Field Tabelnya (ID Barang)✅
 
-			- Tambahkan Bagian Combo Box "KATEGORI" [Protein, Karbohidrat, (kategori 3), (kategori 4), ... ]
+			- Tambahkan Bagian Combo Box "KATEGORI" [Protein, Karbohidrat, (kategori 3), (kategori 4), ... ] ✅
 
 			- Judulnya Diganti, "BARANG MASUK" ===> "DATA BARANG" ✅
 
