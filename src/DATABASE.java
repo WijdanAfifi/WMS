@@ -95,11 +95,12 @@ public class DATABASE {
         }
     }
     
-//========================================================================================================================        
+//========================================================================================================================  
+    // [BARANG.java] Button UBAH
     public static boolean ubah_barang(String id, String kategori, int jumlah, String namaBaru){
         try {
-            String sql = "UPDATE barang SET nama_barang=?, kategori=?, jumlah=? WHERE id_barang=?";
             Connection conn = KONEKSI.getConnection();
+            String sql = "UPDATE barang SET nama_barang=?, kategori=?, jumlah=? WHERE id_barang=?";         
             PreparedStatement pst = conn.prepareStatement(sql);
 
             pst.setString(1, namaBaru);
@@ -118,7 +119,7 @@ public class DATABASE {
 
 
 //========================================================================================================================    
-    // [STOK_BARANG] Tampilkan Isi Tabel
+    // [BARANG.java] Tampilkan Isi Tabel
     public DefaultTableModel getModelBarang() {
         DefaultTableModel model = new DefaultTableModel();
         
@@ -147,6 +148,68 @@ public class DATABASE {
         
         return model;
     }
+
+//========================================================================================================================
+    // [DASHBOARD.java] Tampilkan TOTAL STOK
+    public int total_stok () {
+        int total = 0;
+        try {            
+            Connection conn = KONEKSI.getConnection();
+            String sql = "SELECT SUM(jumlah) AS totalstok FROM barang";
+            Statement stmt = conn.createStatement();            
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while (rs.next()) {
+                total = rs.getInt("totalstok");
+            }  
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
+        return total;
+    }
+    
+//========================================================================================================================
+    // [BARANG.java] Tampilkan STOK MENIPIS
+    public int stok_menipis () {
+        int total = 0;
+        try {            
+            Connection conn = KONEKSI.getConnection();
+            String sql = "SELECT COUNT(*) AS stok_tipis FROM barang WHERE jumlah < 20";
+            Statement stmt = conn.createStatement();            
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while (rs.next()) {
+                total = rs.getInt("stok_tipis");
+            }  
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return total;
+    }
+    
+//========================================================================================================================    
+    // [BARANG.java] Tampilkan STOK MENIPIS
+    public int jenis_barang () {
+        int total = 0;
+        try {            
+            Connection conn = KONEKSI.getConnection();
+            String sql = "SELECT COUNT(DISTINCT nama_barang) AS jenis_barang FROM barang";
+            Statement stmt = conn.createStatement();            
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            while (rs.next()) {
+                total = rs.getInt("jenis_barang");
+            }  
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return total;
+    }
 }
 

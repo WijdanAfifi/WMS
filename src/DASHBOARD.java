@@ -1,9 +1,9 @@
+/**
+ * @author Kelompok 2 - R6P
+ */
 
 import java.awt.Color;
 
-/**
- * @author Wijdan Afifi
- */
 public class DASHBOARD extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DASHBOARD.class.getName());
@@ -12,10 +12,15 @@ public class DASHBOARD extends javax.swing.JFrame {
         REGISTER reg = new REGISTER();
         LAPORAN report = new LAPORAN();
         PENGATURAN setting = new PENGATURAN();
+        DATABASE db = new DATABASE();
         
     public DASHBOARD() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        Stok_Database.setText(String.valueOf(db.total_stok()));
+        Stok_Tipis_Database.setText(String.valueOf(db.stok_menipis()));
+        Jenis_Barang_Database.setText(String.valueOf(db.jenis_barang()));
     }
 
     /**
@@ -41,6 +46,15 @@ public class DASHBOARD extends javax.swing.JFrame {
         panel_welcome = new javax.swing.JPanel();
         border = new javax.swing.JPanel();
         main_layout = new javax.swing.JPanel();
+        Total_Stok = new javax.swing.JPanel();
+        lbl_Stok_Database = new javax.swing.JLabel();
+        Stok_Database = new javax.swing.JLabel();
+        Stok_Tipis = new javax.swing.JPanel();
+        lbl_Stok_Tipis = new javax.swing.JLabel();
+        Stok_Tipis_Database = new javax.swing.JLabel();
+        Jenis_Barang = new javax.swing.JPanel();
+        lbl_Jenis_Barang = new javax.swing.JLabel();
+        Jenis_Barang_Database = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -245,15 +259,136 @@ public class DASHBOARD extends javax.swing.JFrame {
 
         main_layout.setBackground(new java.awt.Color(175, 186, 255));
 
+        Total_Stok.setBackground(new java.awt.Color(255, 255, 255));
+        Total_Stok.setPreferredSize(new java.awt.Dimension(170, 92));
+
+        lbl_Stok_Database.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lbl_Stok_Database.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_Stok_Database.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_Stok_Database.setText("Total Stok");
+
+        Stok_Database.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Stok_Database.setForeground(new java.awt.Color(0, 0, 0));
+        Stok_Database.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Stok_Database.setText("[...]");
+
+        javax.swing.GroupLayout Total_StokLayout = new javax.swing.GroupLayout(Total_Stok);
+        Total_Stok.setLayout(Total_StokLayout);
+        Total_StokLayout.setHorizontalGroup(
+            Total_StokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Total_StokLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(Total_StokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_Stok_Database, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Total_StokLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(Stok_Database, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        Total_StokLayout.setVerticalGroup(
+            Total_StokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Total_StokLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Stok_Database)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_Stok_Database, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        Stok_Tipis.setBackground(new java.awt.Color(255, 255, 255));
+        Stok_Tipis.setPreferredSize(new java.awt.Dimension(170, 92));
+
+        lbl_Stok_Tipis.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lbl_Stok_Tipis.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_Stok_Tipis.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_Stok_Tipis.setText("Stok Menipis");
+
+        Stok_Tipis_Database.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Stok_Tipis_Database.setForeground(new java.awt.Color(0, 0, 0));
+        Stok_Tipis_Database.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Stok_Tipis_Database.setText("[...]");
+
+        javax.swing.GroupLayout Stok_TipisLayout = new javax.swing.GroupLayout(Stok_Tipis);
+        Stok_Tipis.setLayout(Stok_TipisLayout);
+        Stok_TipisLayout.setHorizontalGroup(
+            Stok_TipisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Stok_TipisLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(Stok_TipisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_Stok_Tipis, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Stok_TipisLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(Stok_Tipis_Database, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        Stok_TipisLayout.setVerticalGroup(
+            Stok_TipisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Stok_TipisLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Stok_Tipis_Database)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_Stok_Tipis, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        Jenis_Barang.setBackground(new java.awt.Color(255, 255, 255));
+        Jenis_Barang.setPreferredSize(new java.awt.Dimension(170, 92));
+
+        lbl_Jenis_Barang.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lbl_Jenis_Barang.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_Jenis_Barang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_Jenis_Barang.setText("Jenis Barang");
+
+        Jenis_Barang_Database.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        Jenis_Barang_Database.setForeground(new java.awt.Color(0, 0, 0));
+        Jenis_Barang_Database.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Jenis_Barang_Database.setText("[...]");
+
+        javax.swing.GroupLayout Jenis_BarangLayout = new javax.swing.GroupLayout(Jenis_Barang);
+        Jenis_Barang.setLayout(Jenis_BarangLayout);
+        Jenis_BarangLayout.setHorizontalGroup(
+            Jenis_BarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Jenis_BarangLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(Jenis_BarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_Jenis_Barang, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Jenis_BarangLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(Jenis_Barang_Database, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        Jenis_BarangLayout.setVerticalGroup(
+            Jenis_BarangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Jenis_BarangLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Jenis_Barang_Database)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_Jenis_Barang, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout main_layoutLayout = new javax.swing.GroupLayout(main_layout);
         main_layout.setLayout(main_layoutLayout);
         main_layoutLayout.setHorizontalGroup(
             main_layoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
+            .addGroup(main_layoutLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(Total_Stok, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(Stok_Tipis, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(Jenis_Barang, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(289, Short.MAX_VALUE))
         );
         main_layoutLayout.setVerticalGroup(
             main_layoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGroup(main_layoutLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(main_layoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Jenis_Barang, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Stok_Tipis, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Total_Stok, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(385, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout borderLayout = new javax.swing.GroupLayout(border);
@@ -355,12 +490,21 @@ public class DASHBOARD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Jenis_Barang;
+    private javax.swing.JLabel Jenis_Barang_Database;
+    private javax.swing.JLabel Stok_Database;
+    private javax.swing.JPanel Stok_Tipis;
+    private javax.swing.JLabel Stok_Tipis_Database;
+    private javax.swing.JPanel Total_Stok;
     private javax.swing.JPanel border;
     private javax.swing.JLabel bt_dashboard;
     private javax.swing.JLabel bt_databarang;
     private javax.swing.JLabel bt_laporan;
     private javax.swing.JLabel bt_pengaturan;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_Jenis_Barang;
+    private javax.swing.JLabel lbl_Stok_Database;
+    private javax.swing.JLabel lbl_Stok_Tipis;
     private javax.swing.JPanel main_layout;
     private javax.swing.JPanel panel_kanan;
     private javax.swing.JPanel panel_welcome;
