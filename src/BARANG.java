@@ -1,9 +1,13 @@
 /**
- * @author Wijdan Afifi
+ * @author Kelompok 2 - R6P
  */
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.util.ArrayList;
+import java.util.List;
+
 public class BARANG extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(BARANG.class.getName());
@@ -78,7 +82,7 @@ public class BARANG extends javax.swing.JFrame {
 
         kategori_barang.setBackground(new java.awt.Color(43, 57, 144));
         kategori_barang.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        kategori_barang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Protein", "Karbohidat" }));
+        kategori_barang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Karbohidat", "Protein Nabati", "Protein Hewani", "Buah", "Minuman" }));
 
         Label_jumlahbrg.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         Label_jumlahbrg.setForeground(new java.awt.Color(255, 255, 255));
@@ -116,12 +120,8 @@ public class BARANG extends javax.swing.JFrame {
         Sidebar_login.setLayout(Sidebar_loginLayout);
         Sidebar_loginLayout.setHorizontalGroup(
             Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Sidebar_loginLayout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(Judul)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Sidebar_loginLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Label_namabrg)
                     .addComponent(jSeparator3)
@@ -132,13 +132,20 @@ public class BARANG extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Label_kategoribrg)
-                    .addComponent(kategori_barang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSeparator4)
-                    .addComponent(jumlah_barang)
-                    .addGroup(Sidebar_loginLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jumlah_barang, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(kategori_barang, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(30, 30, 30))
+            .addGroup(Sidebar_loginLayout.createSequentialGroup()
+                .addGroup(Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Sidebar_loginLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(Judul))
+                    .addGroup(Sidebar_loginLayout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Sidebar_loginLayout.setVerticalGroup(
             Sidebar_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,10 +182,10 @@ public class BARANG extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(175, 186, 255));
 
         search_filter.setForeground(new java.awt.Color(255, 255, 255));
-        search_filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Protein", "Karbohidrat" }));
+        search_filter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Semua -", "Karbohidrat", "Protein Hewani", "Protein Nabati", "Buah", "Minuman" }));
         search_filter.addActionListener(this::search_filterActionPerformed);
 
-        search_nama.setText("Nama Barang");
+        search_nama.addActionListener(this::search_namaActionPerformed);
 
         search.setBackground(new java.awt.Color(66, 87, 215));
         search.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -215,7 +222,7 @@ public class BARANG extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(back_dashboard)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(search_filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,24 +230,26 @@ public class BARANG extends javax.swing.JFrame {
                         .addComponent(search_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addGap(167, 167, 167))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(98, 98, 98)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(search_filter, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(search_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(search)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(search_filter, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(search_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(back_dashboard)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(99, 99, 99))
         );
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -250,26 +259,27 @@ public class BARANG extends javax.swing.JFrame {
 
     
     public String generateIdBarang() {
-    String newId = "BRG001";
-    
-    try {
-        Connection conn = KONEKSI.getConnection();
-        String query = "SELECT id_barang FROM barang ORDER BY id_barang DESC LIMIT 1";
-        PreparedStatement ps = conn.prepareStatement(query);
-        ResultSet rs = ps.executeQuery();
-        
-        if (rs.next()) {
-            String lastId = rs.getString("id_barang"); // ex: "BRG004"
-            int number = Integer.parseInt(lastId.substring(3)); // ambil angka: 4
-            number++; // jadi 5
-            newId = String.format("BRG%03d", number); // jadi "BRG005"
+        String newId = "BRG001";
+
+        try {
+            Connection conn = KONEKSI.getConnection();
+            String query = "SELECT id_barang FROM barang ORDER BY id_barang DESC LIMIT 1";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String lastId = rs.getString("id_barang"); // ex: "BRG004"
+                int number = Integer.parseInt(lastId.substring(3)); // ambil angka: 4
+                number++; // jadi 5
+                newId = String.format("BRG%03d", number); // jadi "BRG005"
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-    } catch (SQLException e) {
-        e.printStackTrace();
+    
+        return newId;
     }
     
-    return newId;
-}
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
         String id = generateIdBarang();
         String nama = nama_barang.getText();
@@ -278,17 +288,17 @@ public class BARANG extends javax.swing.JFrame {
 
         if (!nama.isEmpty()) {
 
-            DefaultTableModel model = (javax.swing.table.DefaultTableModel) table_barang.getModel();
+            DefaultTableModel model = (DefaultTableModel) table_barang.getModel();
 
             boolean update = DATABASE.tambah_barang(id, nama, kategori, jumlah);
 
-            javax.swing.JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan ke Tabel!");
+            JOptionPane.showMessageDialog(this, "Data Berhasil Ditambahkan ke Tabel!");
             model.addRow(new Object[]{id, nama, kategori, jumlah});
 
             nama_barang.setText("");
             jumlah_barang.setValue(1);
         } else {
-            javax.swing.JOptionPane.showMessageDialog(this, "Isi Nama Barang terlebih dahulu!");
+            JOptionPane.showMessageDialog(this, "Isi Nama Barang terlebih dahulu!");
         }
     }//GEN-LAST:event_tambahActionPerformed
 
@@ -303,7 +313,7 @@ public class BARANG extends javax.swing.JFrame {
                 "Apakah anda yakin ingin menghapus " + nama + "?",
                 "Konfirmasi Hapus", JOptionPane.YES_NO_OPTION);
 
-            if(confirm == javax.swing.JOptionPane.YES_OPTION){
+            if(confirm == JOptionPane.YES_OPTION){
                 boolean isDeleted = DATABASE.hapus_barang(id);
 
                 if (isDeleted){
@@ -359,7 +369,37 @@ public class BARANG extends javax.swing.JFrame {
     }//GEN-LAST:event_search_filterActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        // TODO add your handling code here:
+        String cariNama = search_nama.getText().trim();
+        String kategoriTerpilih = (String) search_filter.getSelectedItem();
+
+        // 2. Setup Sorter (Pastikan model sesuai dengan table_barang)
+        DefaultTableModel model = (DefaultTableModel) table_barang.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        table_barang.setRowSorter(sorter);
+
+        // 3. List untuk menampung filter
+        List<RowFilter<Object, Object>> filters = new ArrayList<>();
+
+        // Logika Filter Nama Barang (Kolom index 1)
+        if (!cariNama.isEmpty() && !cariNama.equalsIgnoreCase("Nama Barang")) {
+            filters.add(RowFilter.regexFilter("(?i)" + cariNama, 1));
+        }
+
+        // Logika Filter Kategori (Kolom index 2)
+        // Gunakan equalsIgnoreCase agar lebih aman dari typo huruf besar/kecil
+        if (kategoriTerpilih != null && !kategoriTerpilih.equalsIgnoreCase("- Semua -")) {
+            filters.add(RowFilter.regexFilter(kategoriTerpilih, 2));
+        }
+
+        // 4. Eksekusi
+        if (filters.isEmpty()) {
+            // Jika list kosong (berarti user pilih "Semua" dan nama kosong), 
+            // kita hapus semua filter agar data muncul kembali.
+            sorter.setRowFilter(null); 
+        } else {
+            // Terapkan gabungan filter nama dan kategori
+            sorter.setRowFilter(RowFilter.andFilter(filters));
+        }
     }//GEN-LAST:event_searchActionPerformed
 
     private void back_dashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_back_dashboardMouseClicked
@@ -371,6 +411,10 @@ public class BARANG extends javax.swing.JFrame {
         board.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_back_dashboardActionPerformed
+
+    private void search_namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_namaActionPerformed
+        searchActionPerformed(evt);
+    }//GEN-LAST:event_search_namaActionPerformed
 
     /**
      * @param args the command line arguments
